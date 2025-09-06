@@ -8,7 +8,15 @@ admin_password = "admin"
 username_input = input("Please provide username: ")
 password_input = input("Please provide password: ")
 
+
+admin_log_in = admin_username == username_input and admin_password==password_input
+correct_user_log_in = username_input == correct_username and password_input==correct_password
+
 # TODO: Notify user if credentials are valid or invalid
-correct_credentials = None
-print("Access Granted")
-print("Access Denied")
+
+
+correct_credentials=admin_log_in or correct_user_log_in
+if correct_credentials:
+    print("Access Granted")
+else:
+    print("Access Denied")
