@@ -1,3 +1,5 @@
+from operator import index
+
 ranks = ('A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K')
 suits = ("Hearts", "Diamonds", "Clubs", "Spades")
 # TODO: Print every possible pairing of ranks and suits
@@ -12,3 +14,7 @@ suits = ("Hearts", "Diamonds", "Clubs", "Spades")
     3 of Diamonds
     ...
 """
+for suit in suits:
+    print(ranks, suit)
+    for rank in ranks:
+        print(f"{rank} of {suit}")

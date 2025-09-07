@@ -9,3 +9,9 @@ for item in items:
 if item_to_find in items:
     print(item)
 #note
+
+#try to find
+if item_to_find in items:
+    print("Item found")
+else:
+    print('Item not found')

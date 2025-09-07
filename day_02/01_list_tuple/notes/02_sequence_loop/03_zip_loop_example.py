@@ -4,3 +4,7 @@ indices = (1, 2, 3)
 
 for name, balance, index in zip(names, balances, indices):
     print(f"| {index}\t| {name}\t| {balance}\tPHP\t|")
+
+data = zip(names, balances, indices)
+for i, name in enumerate(names):
+    print(data)

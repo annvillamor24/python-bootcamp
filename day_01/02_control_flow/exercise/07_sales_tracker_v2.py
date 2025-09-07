@@ -20,3 +20,13 @@ for item in range(input_count):
 #
 # total= item_cost_1 * item_count_1 + item_cost_2 * item_count_2 + (item_cost_3) * (item_count_3)
 print(total)
+
+# for _ in range(input_count):
+#     item_cost = (int(input("item cost")))
+#     item_count = (int(input("item count")))
+#     item_total = item_cost * item_count
+#     total+=item_total
+#     print(total)
+
+ attendance = []
+    atte

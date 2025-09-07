@@ -1,5 +1,5 @@
 # Ask the user for an input
-user_input = input("Enter number: ")
+user_input = input("Enter number: ").strip()
 
 # TODO: Remove extra spaces
 
