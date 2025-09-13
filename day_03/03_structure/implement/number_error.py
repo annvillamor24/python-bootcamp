@@ -1,3 +1,21 @@
+class NotANumberError(Exception):
+    pass
+
+class NotAPossibleError(Exception):
+    pass
+
+class NotBetween1and100Error(Exception):
+    pass
+raise NotBetween1and100Error()
+
+
+
+
+
+
+
+
+
 number = input("Enter positive number [1,100]: ")
 
 # If input not a number, raise a custom error

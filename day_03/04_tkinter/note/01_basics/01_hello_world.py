@@ -11,3 +11,14 @@ next_label = tkinter.Label(root, text="World")
 next_label.pack()
 
 root.mainloop()
+
+# or
+# message = """
+# Hello World!
+# Hello Again!
+# """
+# label = tkinter.label(root, text = message
+# label.pack()
+
+
+
