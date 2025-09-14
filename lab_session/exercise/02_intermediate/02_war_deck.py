@@ -1,3 +1,4 @@
+import random
 class Card:
     """Represents a playing card with a suit and rank."""
 
@@ -10,11 +11,19 @@ class Card:
         Returns the numeric value of the card.
         TODO: Map ranks to values. 2-10 = 2-10, J = 11, Q = 12, K = 13, A = 14
         """
-        pass
+
+        rank_values = {
+            "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7,
+            "8": 8, "9": 9, "10": 10,
+            "J": 11, "Q": 12, "K": 13, "A": 14
+        }
+        return rank_values[self.rank]
 
     def __str__(self) -> str:
         """Returns string representation like 'A of Spades'."""
+
         return f"{self.rank} of {self.suit}"
+
 
 
 class Deck:
@@ -29,12 +38,20 @@ class Deck:
         Populates the deck with 52 cards.
         TODO: Create cards for all combinations of 4 suits and 13 ranks.
         """
-        pass
+
+        ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
+        suits = ["Hearts", "Diamonds", "Clubs", "Spades"]
+
+        for rank in ranks:
+            for suit in suits:
+                self.cards.append(Card(suit, rank))
+
 
     def shuffle(self) -> None:
         """Randomly shuffles the deck."""
         # TODO: Shuffle self.cards
-        pass
+
+        random.shuffle(self.cards)
 
     def split(self) -> tuple:
         """
@@ -42,7 +59,9 @@ class Deck:
         Returns:
             (list, list): Two lists of Card objects
         """
-        pass
+
+        half = len(self.cards) // 2
+        return self.cards[:half], self.cards[half:]
 
 
 def play_round(card1: Card, card2: Card) -> int:
@@ -54,7 +73,12 @@ def play_round(card1: Card, card2: Card) -> int:
         0 if tie
     TODO: Compare using value()
     """
-    pass
+    if card1.value() > card2.value():
+        return 1
+    elif card2.value() > card1.value():
+        return 2
+    else:
+        return 0
 
 
 def play_game(deck1: list, deck2: list) -> None:
@@ -62,7 +86,37 @@ def play_game(deck1: list, deck2: list) -> None:
     Main game loop. Runs 26 rounds and tracks score.
     TODO: Loop over both decks, compare cards, update scores, and print result.
     """
-    pass
+    score1 = 0
+    score2 = 0
+
+    for i in range(26):
+        card1 = deck1[i]
+        card2 = deck2[i]
+
+        print(f"Round {i + 1}:")
+        print(f"  Player 1: {card1}")
+        print(f"  Player 2: {card2}")
+
+        result = play_round(card1, card2)
+
+        if result == 1:
+            print("  → Player 1 wins the round!\n")
+            score1 += 1
+        elif result == 2:
+            print("  → Player 2 wins the round!\n")
+            score2 += 1
+        else:
+            print("  → It's a tie!\n")
+
+    print("Game Over!")
+    print(f"Final Score: Player 1 = {score1}, Player 2 = {score2}")
+
+    if score1 > score2:
+        print("Player 1 wins the game!")
+    elif score2 > score1:
+        print("Player 2 wins the game!")
+    else:
+        print("It's a draw!")
 
 
 def main() -> None:
@@ -74,8 +128,12 @@ def main() -> None:
     - Split into two decks
     - Run play_game
     """
-    pass
 
+    deck = Deck()
+    deck.shuffle()
+
+    deck1, deck2 = deck.split()
+    play_game(deck1, deck2)
 
 if __name__ == "__main__":
     main()

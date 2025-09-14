@@ -1,4 +1,5 @@
 import time
+from concurrent.futures.thread import ThreadPoolExecutor
 
 import requests
 
@@ -25,8 +26,12 @@ websites = websites[:100]  # Limit to 100 for brevity
 if __name__ == '__main__':
     start_time = time.time()
 
-    for website in websites:
-        check_website(website)
+    # ito yung pampabilis mag load
+    with ThreadPoolExecutor() as executor:
+        output = executor.map(check_website, websites)
+
+    # for website in websites:
+    #     check_website(website)
 
     end_time = time.time()
     print(end_time - start_time)
